@@ -1,2 +1,1 @@
-# projeto-pitang-frontend
- 
+Frontend para o projeto da pitang 2024
