@@ -68,26 +68,28 @@ const Cadastrar = () => {
                 <Input
                   type="text"
                   value={form.nome}
-                  onChange={handleInputChange}
+                  onChange={handleInputChange} // Atualiza o estado do nome
                 />
               </FormControl>
-              <FormControl id="dataNascimento">
-                <FormLabel>Data de Nascimento</FormLabel>
-                <DatePicker
-                  time={false}
-                  selected={form.dataNascimento}
-                  onChange={(date) => handleDateChange(date, 'dataNascimento')}
-                />
-              </FormControl>
-              <FormControl id="dataAgendamento">
-                <FormLabel>Data do Agendamento</FormLabel>
-                <DatePicker
-                  time={true}
-                  selected={form.dataAgendamento}
-                  onChange={(date) => handleDateChange(date, 'dataAgendamento')}
-                />
-              </FormControl>
-              <Stack spacing={10}>
+              <Box mx={'auto'} textAlign={'center'}>
+                <FormControl id="dataNascimento" mb={4}>
+                  <FormLabel>Data de Nascimento</FormLabel>
+                  <DatePicker
+                    time={false}
+                    selected={form.dataNascimento}
+                    onChange={(date) => handleDateChange(date, 'dataNascimento')} // Atualiza o estado da data de nascimento
+                  />
+                </FormControl>
+                <FormControl id="dataAgendamento">
+                  <FormLabel>Data do Agendamento</FormLabel>
+                  <DatePicker
+                    time={true}
+                    selected={form.dataAgendamento}
+                    onChange={(date) => handleDateChange(date, 'dataAgendamento')} // Atualiza o estado da data do agendamento
+                  />
+                </FormControl>
+              </Box>
+              <Stack spacing={10} mt={4}>
                 <Button
                   type="submit"
                   bg={'blue.400'}
