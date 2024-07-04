@@ -1,5 +1,6 @@
-'use client'
-import DatePicker from '../components/DatePicker';
+"use client";
+import DatePicker from "../components/DatePicker";
+import { useState } from 'react'; 
 import {
   Flex,
   Box,
@@ -11,9 +12,37 @@ import {
   Heading,
   Text,
   useColorModeValue,
-} from '@chakra-ui/react'
+} from "@chakra-ui/react";
 
 const Cadastrar = () => {
+
+    const [form, setForm] = useState({
+        nome: '',
+        dataNascimento: new Date(),
+        dataAgendamento: new Date(),
+      });
+
+      const handleInputChange = (e) => {
+        const { id, value } = e.target;
+        setForm({
+          ...form,
+          [id]: value, 
+        });
+      };
+    
+     
+      const handleDateChange = (date, field) => {
+        setForm({
+          ...form,
+          [field]: date,
+        });
+      };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log('Dados do formulário:', form);
+  };
+
   return (
     <Flex
       minH={'100vh'}
@@ -32,34 +61,49 @@ const Cadastrar = () => {
           bg={useColorModeValue('white', 'gray.700')}
           boxShadow={'lg'}
           p={8}>
-          <Stack spacing={4}>
-            <FormControl id="nome">
-              <FormLabel>Nome Completo</FormLabel>
-              <Input type="nome" />
-            </FormControl>
-            <Stack spacing={10}>
-            <FormControl id="data">
-              <FormLabel>Data de Nascimento</FormLabel>
-              <DatePicker time={false}/>
-            </FormControl>
-            <FormControl id="data">
-              <FormLabel>Data do Agendamento</FormLabel>
-              <DatePicker time={true}/>
-            </FormControl>
-              <Button
-                bg={'blue.400'}
-                color={'white'}
-                _hover={{
-                  bg: 'blue.500',
-                }}>
-                Sign in
-              </Button>
+          <form onSubmit={handleSubmit}>
+            <Stack spacing={4}>
+              <FormControl id="nome">
+                <FormLabel>Nome Completo</FormLabel>
+                <Input
+                  type="text"
+                  value={form.nome}
+                  onChange={handleInputChange}
+                />
+              </FormControl>
+              <FormControl id="dataNascimento">
+                <FormLabel>Data de Nascimento</FormLabel>
+                <DatePicker
+                  time={false}
+                  selected={form.dataNascimento}
+                  onChange={(date) => handleDateChange(date, 'dataNascimento')}
+                />
+              </FormControl>
+              <FormControl id="dataAgendamento">
+                <FormLabel>Data do Agendamento</FormLabel>
+                <DatePicker
+                  time={true}
+                  selected={form.dataAgendamento}
+                  onChange={(date) => handleDateChange(date, 'dataAgendamento')}
+                />
+              </FormControl>
+              <Stack spacing={10}>
+                <Button
+                  type="submit"
+                  bg={'blue.400'}
+                  color={'white'}
+                  _hover={{
+                    bg: 'blue.500',
+                  }}>
+                  Cadastrar
+                </Button>
+              </Stack>
             </Stack>
-          </Stack>
+          </form>
         </Box>
       </Stack>
     </Flex>
-  )
-}
+  );
+};
 
 export default Cadastrar;
