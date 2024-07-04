@@ -1,0 +1,10 @@
+.custom-date-picker {
+    border: 2px solid #3182ce; /* Cor da borda */
+    border-radius: 4px; /* Cantos arredondados */
+    padding: 4px; /* Espaçamento interno */
+  }
+  
+.custom-date-picker input {
+    border: none; /* Remove borda padrão do input */
+    outline: none; /* Remove outline padrão do input */
+  }

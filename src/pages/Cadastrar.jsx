@@ -1,12 +1,11 @@
 'use client'
-
+import DatePicker from '../components/DatePicker';
 import {
   Flex,
   Box,
   FormControl,
   FormLabel,
   Input,
-  Checkbox,
   Stack,
   Button,
   Heading,
@@ -14,7 +13,7 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react'
 
-export default function SimpleCard() {
+const Cadastrar = () => {
   return (
     <Flex
       minH={'100vh'}
@@ -35,10 +34,18 @@ export default function SimpleCard() {
           p={8}>
           <Stack spacing={4}>
             <FormControl id="nome">
-              <FormLabel>Nome</FormLabel>
+              <FormLabel>Nome Completo</FormLabel>
               <Input type="nome" />
             </FormControl>
             <Stack spacing={10}>
+            <FormControl id="data">
+              <FormLabel>Data de Nascimento</FormLabel>
+              <DatePicker time={false}/>
+            </FormControl>
+            <FormControl id="data">
+              <FormLabel>Data do Agendamento</FormLabel>
+              <DatePicker time={true}/>
+            </FormControl>
               <Button
                 bg={'blue.400'}
                 color={'white'}
@@ -54,3 +61,5 @@ export default function SimpleCard() {
     </Flex>
   )
 }
+
+export default Cadastrar;
