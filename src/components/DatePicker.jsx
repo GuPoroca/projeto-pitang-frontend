@@ -19,6 +19,8 @@ const DatePicker = ({ agendamento, selected, onDateChange }) => {
     };
   
     return (
+      <>
+      <h1>teste</h1>
       <ReactDatePicker
         selected={selected}
         onChange={(date) => onDateChange(date)}
@@ -36,13 +38,14 @@ const DatePicker = ({ agendamento, selected, onDateChange }) => {
         dateFormat={agendamento ? "dd/MM/yyyy HH:mm" : "dd/MM/yyyy"}
         className="custom-date-picker"
       />
+      </>
     );
   };
 
   DatePicker.propTypes = {
     agendamento: PropTypes.bool.isRequired,
-    selected: PropTypes.instanceOf(Date).isRequired,
-    onDateChange: PropTypes.func.isRequired,
+    selected: PropTypes.instanceOf(Date),
+    onDateChange: PropTypes.func
   };
 
 export default DatePicker;

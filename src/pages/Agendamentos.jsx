@@ -1,3 +1,5 @@
-const Agendamentos = () => <h1>Teste 112313</h1>
+import DatePicker from "../components/DatePicker";
+
+const Agendamentos = () => <DatePicker/>
 
 export default Agendamentos;
