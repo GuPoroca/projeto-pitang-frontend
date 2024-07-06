@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   FormControl,
   FormLabel,
@@ -6,63 +5,92 @@ import {
   Stack,
   Input,
   Button,
+  FormErrorMessage,
 } from "@chakra-ui/react";
+import { Controller, useForm } from "react-hook-form";
 import DatePicker from "./DatePicker";
 
 const CadastroForm = () => {
-  const [form, setForm] = useState({
-    nome: "",
-    dataNascimento: new Date(),
-    dataAgendamento: new Date(),
-  });
+  const {
+    control,
+    handleSubmit,
+    register,
+    formState: { errors, isSubmitting },
+  } = useForm();
 
-  const handleInputChange = (e) => {
-    const { id, value } = e.target;
-    setForm({
-      ...form,
-      [id]: value,
+  function onSubmit(values) {
+    console.log(values);
+    return new Promise((resolve) => {
+      alert(JSON.stringify(values, null, 2));
+      resolve();
     });
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log("Dados do formulário:", form);
-  };
-
-  const handleDateChange = (date, field) => {
-    setForm((prevForm) => ({
-      ...prevForm,
-      [field]: date,
-    }));
-  };
+  }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <Stack spacing={4}>
-        <FormControl isRequired id="nome">
-          <FormLabel>Nome Completo</FormLabel>
-          <Input type="text" value={form.nome} onChange={handleInputChange} />
+        <FormControl isInvalid={errors.name}>
+          <FormLabel htmlFor="name">Nome Completo</FormLabel>
+          <Input
+            id="name"
+            type="text"
+            {...register("name", {
+              required: "Campo Obrigatório",
+            })}
+          />
+          <FormErrorMessage>
+            {errors.name && errors.name.message}
+          </FormErrorMessage>
         </FormControl>
         <Box mx={"unset"} textAlign={"center"}>
-          <FormControl id="dataNascimento" mb={4} isRequired>
-            <FormLabel>Data de Nascimento</FormLabel>
-            <DatePicker
-              agendamento={false}
-              selected={form.dataNascimento}
-              onDateChange={(date) => handleDateChange(date, "dataNascimento")}
+          <FormControl mb={4} isInvalid={errors.dataNascimento}>
+            <FormLabel htmlFor="date">Data de Nascimento</FormLabel>
+            <Controller
+              control={control}
+              name="dataNascimento"
+              rules={{
+                required: "Campo Obrigatório",
+              }}
+              render={({ field }) => (
+                <>
+                  <DatePicker
+                    agendamento={false}
+                    selected={field.value}
+                    onDateChange={(date) => field.onChange(date)}
+                  />
+                  <FormErrorMessage>
+                    {errors.dataNascimento && errors.dataNascimento.message}
+                  </FormErrorMessage>
+                </>
+              )}
             />
           </FormControl>
-          <FormControl id="dataAgendamento" isRequired>
-            <FormLabel>Data do Agendamento</FormLabel>
-            <DatePicker
-              agendamento={true}
-              selected={form.dataAgendamento}
-              onDateChange={(date) => handleDateChange(date, "dataAgendamento")}
+          <FormControl mb={4} isInvalid={errors.dataAgendamento}>
+            <FormLabel htmlFor="date">Data de Agendamento</FormLabel>
+            <Controller
+              control={control}
+              name="dataAgendamento"
+              rules={{
+                required: "Campo Obrigatório",
+              }}
+              render={({ field }) => (
+                <>
+                  <DatePicker
+                    agendamento={true}
+                    selected={field.value}
+                    onDateChange={(date) => field.onChange(date)}
+                  />
+                  <FormErrorMessage>
+                    {errors.dataAgendamento && errors.dataAgendamento.message}
+                  </FormErrorMessage>
+                </>
+              )}
             />
           </FormControl>
         </Box>
         <Stack spacing={10} mt={4}>
           <Button
+            isLoading={isSubmitting}
             type="submit"
             bg={"blue.400"}
             color={"white"}
