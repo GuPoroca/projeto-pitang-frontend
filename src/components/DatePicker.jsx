@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { registerLocale, setDefaultLocale } from "react-datepicker";
@@ -37,12 +36,6 @@ const DatePicker = ({ agendamento, selected, onDateChange }) => {
         className="custom-date-picker"
       />
     );
-  };
-
-  DatePicker.propTypes = {
-    agendamento: PropTypes.bool.isRequired,
-    selected: PropTypes.instanceOf(Date),
-    onDateChange: PropTypes.func
   };
 
 export default DatePicker;

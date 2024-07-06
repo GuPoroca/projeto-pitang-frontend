@@ -16,14 +16,17 @@ const CadastroForm = () => {
     handleSubmit,
     register,
     formState: { errors, isSubmitting },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      name: "",
+      dataNascimento: "",
+      dataAgendamento: "",
+    },
+  });
 
   function onSubmit(values) {
     console.log(values);
-    return new Promise((resolve) => {
-      alert(JSON.stringify(values, null, 2));
-      resolve();
-    });
+    return;
   }
 
   return (
@@ -44,7 +47,7 @@ const CadastroForm = () => {
         </FormControl>
         <Box mx={"unset"} textAlign={"center"}>
           <FormControl mb={4} isInvalid={errors.dataNascimento}>
-            <FormLabel htmlFor="date">Data de Nascimento</FormLabel>
+            <FormLabel htmlFor="dataNascimento">Data de Nascimento</FormLabel>
             <Controller
               control={control}
               name="dataNascimento"
@@ -54,6 +57,8 @@ const CadastroForm = () => {
               render={({ field }) => (
                 <>
                   <DatePicker
+                    id="dataNascimento"
+                    aria-label="dataNascimento-label"
                     agendamento={false}
                     selected={field.value}
                     onDateChange={(date) => field.onChange(date)}
@@ -66,7 +71,7 @@ const CadastroForm = () => {
             />
           </FormControl>
           <FormControl mb={4} isInvalid={errors.dataAgendamento}>
-            <FormLabel htmlFor="date">Data de Agendamento</FormLabel>
+            <FormLabel htmlFor="dataAgendamento">Data de Agendamento</FormLabel>
             <Controller
               control={control}
               name="dataAgendamento"
@@ -76,6 +81,8 @@ const CadastroForm = () => {
               render={({ field }) => (
                 <>
                   <DatePicker
+                    id="dataAgendamento"
+                    aria-label="dataAgendamento-label"
                     agendamento={true}
                     selected={field.value}
                     onDateChange={(date) => field.onChange(date)}
