@@ -3,7 +3,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { registerLocale, setDefaultLocale } from "react-datepicker";
 import ptBR from "date-fns/locale/pt-BR";
 import { subDays, addDays} from 'date-fns';
-import './style.css';
+import '../style.css';
 
 registerLocale('pt-BR', ptBR);
 setDefaultLocale('pt-BR');

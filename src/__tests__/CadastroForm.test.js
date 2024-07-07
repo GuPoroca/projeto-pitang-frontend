@@ -1,5 +1,5 @@
 import { render, screen, fireEvent, act } from "@testing-library/react";
-import CadastroForm from "../components/CadastroForm";
+import CadastroForm from "../components/Formularios/CadastroForm";
 
 jest.mock("../components/DatePicker", () => {
   return (props) => (

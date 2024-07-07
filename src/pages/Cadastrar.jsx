@@ -1,5 +1,5 @@
 "use client";
-import CadastroForm from "../components/CadastroForm.jsx";
+import CadastroForm from "../components/Formularios/CadastroForm.jsx";
 import {
   Flex,
   Box,
