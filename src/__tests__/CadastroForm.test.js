@@ -39,11 +39,9 @@ describe("<CadastroForm />", () => {
     });
 
     it("should submit form when all fields are filled", async () => {
-      const handleOnSubmitMock = jest.fn();
+
       renderComponent();
       
-      
-
       await act(async () => {
         fireEvent.change(screen.getByLabelText(/nome completo/i), {
           target: { value: "John Doe" },
