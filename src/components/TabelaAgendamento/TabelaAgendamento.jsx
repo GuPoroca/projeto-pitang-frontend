@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from 'primereact/button';
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
-import { Flex, Stack, Heading, Text, useColorModeValue, Input } from "@chakra-ui/react";
+import { Input } from "@chakra-ui/react";
 import "../style.css";
 
 
