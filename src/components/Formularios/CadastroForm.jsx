@@ -8,6 +8,8 @@ import {
   FormErrorMessage,
 } from "@chakra-ui/react";
 import { Controller, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { schema } from "./CadastroZodSchema";
 import DatePicker from "./DatePicker";
 
 const CadastroForm = () => {
@@ -17,6 +19,7 @@ const CadastroForm = () => {
     register,
     formState: { errors, isSubmitting },
   } = useForm({
+    resolver: zodResolver(schema),
     defaultValues: {
       name: "",
       dataNascimento: "",
