@@ -1,4 +1,4 @@
-import DatePicker from "../components/DatePicker";
+import DatePicker from "../components/Formularios/DatePicker";
 import { render, screen } from "@testing-library/react";
 
 describe("<DatePicker />", () => {

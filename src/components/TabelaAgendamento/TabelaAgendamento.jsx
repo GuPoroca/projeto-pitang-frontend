@@ -6,7 +6,7 @@ import { Flex, Stack, Heading, Text, useColorModeValue, Input } from "@chakra-ui
 import "../style.css";
 
 
-const TabelaAgendamento = ({agendamentos}) => {
+const TabelaAgendamento = ({agendamentos, numEachPage = 10}) => {
     const paginatorLeft = <Button type="button" icon="pi pi-refresh" text />;
     const paginatorRight = <Button type="button" icon="pi pi-download" text />;
   
@@ -29,7 +29,7 @@ const TabelaAgendamento = ({agendamentos}) => {
                     value={filteredAgendamentos.length ? filteredAgendamentos : agendamentos}
                     removableSort
                     paginator
-                    rows={10}
+                    rows={numEachPage}
                     paginatorTemplate="RowsPerPageDropdown FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink"
                     currentPageReportTemplate="{first} até {last} de {totalRecords}"
                     paginatorLeft={paginatorLeft}

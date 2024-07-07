@@ -1,5 +1,5 @@
 export default {
-    testEnvironment: 'jsdom',
+    testEnvironment: "@happy-dom/jest-environment",
     moduleNameMapper: {
       "^.+\\.svg$": "jest-svg-transformer",
       "^.+\\.css$": "identity-obj-proxy"
