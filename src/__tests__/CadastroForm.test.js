@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, act } from "@testing-library/react";
+import { render, screen, fireEvent, act, waitFor } from "@testing-library/react";
 import CadastroForm from "../components/Formularios/CadastroForm";
 
 jest.mock("../components/Formularios/DatePicker", () => {
@@ -29,31 +29,51 @@ describe("CadastroForm", () => {
 
     const submitButton = screen.getByRole("button", { name: /cadastrar/i });
     fireEvent.click(submitButton);
-
-    const errorMessages = await screen.findAllByText(/campo obrigatório/i);
-    expect(errorMessages).toHaveLength(3);
+    const nameErrorMessage = await screen.findAllByText("Nome tem que ter pelo menos 4 letras");
+    expect(nameErrorMessage).toHaveLength(1);
+    const dateErrorMessages = await screen.findAllByText("Data inválida");
+    expect(dateErrorMessages).toHaveLength(2);
   });
 
   it("should submit form when all fields are filled", async () => {
     renderComponent();
-
+  
     await act(async () => {
       fireEvent.change(screen.getByLabelText(/nome completo/i), {
         target: { value: "John Doe" },
       });
-
+  
       fireEvent.change(screen.getByLabelText(/data de nascimento/i), {
-        target: { value: "2000-01-01" },
+        target: { value: "2002-07-22" },
       });
-
+  
       fireEvent.change(screen.getByLabelText(/data de agendamento/i), {
-        target: { value: "2024-12-31" },
+        target: { value: "2024-07-30" },
+      });
+  
+      fireEvent.click(screen.getByRole("button", { name: /cadastrar/i }));
+    });
+  
+    await waitFor(() => {
+      expect(screen.queryByText("String must contain at least 4 character(s)")).toBeNull();
+      expect(screen.queryByText("Data inválida")).toBeNull();
+    });
+  });
+
+  it("should not let put a past date on agendamento", async () => {
+    renderComponent();
+
+    await act(async () => {
+      
+      fireEvent.change(screen.getByLabelText(/data de agendamento/i), {
+        target: { value: "2002-07-22" },
       });
 
       fireEvent.click(screen.getByRole("button", { name: /cadastrar/i }));
     });
     //substituir por alguma forma de como eu enviei os dados do formulário
-    const errorMessages = await screen.queryAllByText(/campo obrigatório/i);
-    expect(errorMessages).toHaveLength(0);
-  });
+    const dateErrorMessages = await screen.findAllByText("Data inválida");
+    expect(dateErrorMessages).toHaveLength(1);
+  })
+
 });

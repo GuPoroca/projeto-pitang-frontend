@@ -6,7 +6,7 @@ const today = new Date();
 const now = new Date();
 
 export const schema = z.object({
-  name: z.string().min(4),
+  name: z.string().min(4, {message: "Nome tem que ter pelo menos 4 letras"}),
   dataNascimento: z.date({
     required_error: "Campo Obrigatório",
     invalid_type_error: "Data inválida",
