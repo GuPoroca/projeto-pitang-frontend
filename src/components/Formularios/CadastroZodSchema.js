@@ -2,7 +2,6 @@
 import { z } from 'zod';
 import { subDays } from 'date-fns';
 
-const today = new Date();
 const now = new Date();
 
 export const schema = z.object({
@@ -10,7 +9,7 @@ export const schema = z.object({
   dataNascimento: z.date({
     required_error: "Campo Obrigatório",
     invalid_type_error: "Data inválida",
-  }).max(subDays(today, 0), { message: "Data de nascimento não pode ser futura" }),
+  }).max(subDays(now, 0), { message: "Data de nascimento não pode ser futura" }),
   dataAgendamento: z.date({
     required_error: "Campo Obrigatório",
     invalid_type_error: "Data inválida",
