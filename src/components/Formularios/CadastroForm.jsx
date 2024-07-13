@@ -11,6 +11,7 @@ import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { schema } from "./CadastroZodSchema";
 import DatePicker from "./DatePicker";
+import axios from "axios";
 
 const CadastroForm = () => {
   const {
@@ -28,6 +29,10 @@ const CadastroForm = () => {
   });
 
   function onSubmit(values) {
+    axios.post("http://localhost:3000/api/agendamentos", values)
+      .then(res =>{
+        console.log(res.data);
+      });
     console.log(values);
     return;
   }
