@@ -4,37 +4,37 @@ import TabelaAgendamento from "../components/TabelaAgendamento/TabelaAgendamento
 const agendamentosMock = [
   {
     id: 1,
-    nome: "Marcos Castro",
+    name: "Marcos Castro",
     dataNascimento: new Date().toLocaleDateString(),
     dataAgendamento: new Date().toLocaleString(),
   },
   {
     id: 2,
-    nome: "Keven Leone",
+    name: "Keven Leone",
     dataNascimento: new Date().toLocaleDateString(),
     dataAgendamento: new Date().toLocaleString(),
   },
   {
     id: 3,
-    nome: "Gustavo Poroca",
+    name: "Gustavo Poroca",
     dataNascimento: new Date().toLocaleDateString(),
     dataAgendamento: new Date().toLocaleString(),
   },
   {
     id: 4,
-    nome: "Modas Castro",
+    name: "Modas Castro",
     dataNascimento: new Date().toLocaleDateString(),
     dataAgendamento: new Date().toLocaleString(),
   },
   {
     id: 5,
-    nome: "Keven Modas",
+    name: "Keven Modas",
     dataNascimento: new Date().toLocaleDateString(),
     dataAgendamento: new Date().toLocaleString(),
   },
   {
     id: 6,
-    nome: "Gusmodas Poroca",
+    name: "Gusmodas Poroca",
     dataNascimento: new Date().toLocaleDateString(),
     dataAgendamento: new Date().toLocaleString(),
   },
