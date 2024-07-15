@@ -1,5 +1,8 @@
 import { render, screen, fireEvent, act, waitFor } from "@testing-library/react";
 import CadastroForm from "../components/Formularios/CadastroForm";
+import axios from "axios";
+
+jest.mock('axios');
 
 jest.mock("../components/Formularios/DatePicker", () => {
   return (props) => (
@@ -12,6 +15,15 @@ jest.mock("../components/Formularios/DatePicker", () => {
     />
   );
 });
+
+// mock do ToastContext para testes
+const mockToastContext = {
+  showToast: jest.fn(), // Mock da função showToast
+};
+
+jest.mock('../context/ToastContext', () => ({
+  useToastContext: () => mockToastContext, // Retorna o mock do contexto
+}));
 
 const renderComponent = () => {
   return render(<CadastroForm />);
@@ -55,6 +67,7 @@ describe("CadastroForm", () => {
     });
   
     await waitFor(() => {
+      axios.post.mockResolvedValueOnce({ status: 201 });
       expect(screen.queryByText("String must contain at least 4 character(s)")).toBeNull();
       expect(screen.queryByText("Data inválida")).toBeNull();
     });
