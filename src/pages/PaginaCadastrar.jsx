@@ -1,4 +1,3 @@
-"use client";
 import CadastroForm from "../components/Formularios/CadastroForm.jsx";
 import {
   Flex,

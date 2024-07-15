@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Button } from "primereact/button";
 import axios from "axios";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
@@ -9,18 +8,11 @@ import {
   Heading,
   Text,
   useColorModeValue,
-  Input,
 } from "@chakra-ui/react";
 import "../components/style.css";
 import TabelaAgendamento from "../components/TabelaAgendamento/TabelaAgendamento";
 
 const Agendamentos = () => {
-  const paginatorLeft = <Button type="button" icon="pi pi-refresh" text />;
-  const paginatorRight = <Button type="button" icon="pi pi-download" text />;
-
-  const [nameFilter, setNameFilter] = useState("");
-  const [filteredAgendamentos, setFilteredAgendamentos] = useState([]);
-
   const [agendamentos, setAgendamentos] = useState([]);
 
   useEffect(() => {
@@ -48,17 +40,6 @@ const Agendamentos = () => {
 
     fetchData();
   }, []);
-
-  const onNameFilterChange = (e) => {
-    const value = e.target.value;
-    setNameFilter(value);
-
-    const filteredData = agendamentos.filter((agendamento) => {
-      return agendamento.nome.toLowerCase().includes(value.toLowerCase());
-    });
-
-    setFilteredAgendamentos(filteredData);
-  };
 
   return (
     <Flex
