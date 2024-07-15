@@ -11,12 +11,12 @@ import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { schema } from "./CadastroZodSchema";
 import DatePicker from "./DatePicker";
-import { useState } from 'react';
 import axios from "axios";
-import Popup from '../Popup/Popup';
+import { useToastContext } from '../../context/ToastContext';
 
 const CadastroForm = () => {
-  const [toastPromise, setToastPromise] = useState(null);
+  const { showToast } = useToastContext();
+
   const {
     control,
     handleSubmit,
@@ -32,15 +32,15 @@ const CadastroForm = () => {
   });
 
   const onSubmit = async (values) => {
-    const promise = axios.post("http://localhost:3000/api/agendamentos", values);
-    setToastPromise(promise);
+    const promise = axios.post(
+      "http://localhost:3000/api/agendamentos",
+      values
+    );
+    showToast(promise);
     await promise;
-    setToastPromise(null); 
   };
 
   return (
-    <>
-      {toastPromise && <Popup promise={toastPromise} />}
       <form onSubmit={handleSubmit(onSubmit)}>
         <Stack spacing={4}>
           <FormControl isInvalid={errors.name}>
@@ -82,7 +82,9 @@ const CadastroForm = () => {
               />
             </FormControl>
             <FormControl mb={4} isInvalid={errors.dataAgendamento}>
-              <FormLabel htmlFor="dataAgendamento">Data de Agendamento</FormLabel>
+              <FormLabel htmlFor="dataAgendamento">
+                Data de Agendamento
+              </FormLabel>
               <Controller
                 control={control}
                 name="dataAgendamento"
@@ -121,7 +123,6 @@ const CadastroForm = () => {
           </Stack>
         </Stack>
       </form>
-    </>
   );
 };
 

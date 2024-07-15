@@ -4,16 +4,19 @@ import { PrimeReactProvider } from "primereact/api";
 import Agendamentos from "./pages/PaginaAgendamentos";
 import Cadastrar from "./pages/PaginaCadastrar";
 import NavBar from "./components/NavBar";
+import { ToastProvider } from "./context/ToastContext";
 
 const AppRoutes = () => (
   <BrowserRouter>
     <ChakraProvider>
       <PrimeReactProvider>
-        <NavBar />
-        <Routes>
-          <Route path="/" element={<Cadastrar />} />
-          <Route path="/agendamento" element={<Agendamentos />} />
-        </Routes>
+        <ToastProvider>
+          <NavBar />
+          <Routes>
+            <Route path="/" element={<Cadastrar />} />
+            <Route path="/agendamento" element={<Agendamentos />} />
+          </Routes>
+        </ToastProvider>
       </PrimeReactProvider>
     </ChakraProvider>
   </BrowserRouter>
