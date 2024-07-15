@@ -5,7 +5,7 @@ import { Column } from "primereact/column";
 import { Input } from "@chakra-ui/react";
 import "../style.css";
 
-const TabelaAgendamento = ({ agendamentos, numEachPage = 8 }) => {
+const TabelaAgendamento = ({ agendamentos, numEachPage = 7 }) => {
   const paginatorLeft = <Button type="button" icon="pi pi-refresh" text />;
   const paginatorRight = <Button type="button" icon="pi pi-download" text />;
 
