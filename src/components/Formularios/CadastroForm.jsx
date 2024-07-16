@@ -14,7 +14,9 @@ import DatePicker from "./DatePicker";
 import axios from "axios";
 import { useToastContext } from "../../context/ToastContext";
 
+
 const CadastroForm = () => {
+  const backend_URL = import.meta.env.VITE_BACKEND_URL;
   const { showToast } = useToastContext();
 
   const {
@@ -32,8 +34,9 @@ const CadastroForm = () => {
   });
 
   const onSubmit = async (values) => {
+    console.log("")
     const promise = axios.post(
-      "http://localhost:3000/api/agendamentos",
+      `${backend_URL}/api/agendamentos`,
       values
     );
     showToast(promise);

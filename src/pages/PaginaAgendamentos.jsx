@@ -13,13 +13,14 @@ import "../components/style.css";
 import TabelaAgendamento from "../components/TabelaAgendamento/TabelaAgendamento";
 
 const Agendamentos = () => {
+  const backend_URL = import.meta.env.VITE_BACKEND_URL;
   const [agendamentos, setAgendamentos] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/api/agendamentos"
+          `${backend_URL}/api/agendamentos`
         );
         const formattedData = response.data.items.map((item) => ({
           ...item,
