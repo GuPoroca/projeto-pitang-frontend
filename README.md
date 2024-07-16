@@ -41,7 +41,9 @@ Para validação de dados, usei o Zod como recomendado e ensinado nas aulas.
 
 Para os testes, tive que fazer bastante configuração, decidi usar o SWC no lugar do Babel, então precisei do: 
 - @swc/jest
+
 além disso, utilizei os
+
 - @happy-dom/jest-environment
 - happy-dom
 - identity-obj-proxy
