@@ -80,7 +80,7 @@ describe("<TabelaAgendamento />", () => {
       expect(screen.getByText("Gusmodas Poroca")).toBeInTheDocument();
     });
     it("should not break if there is no agendamentos", () => {
-      renderComponent([{}]);
+      renderComponent();
       expect(screen.getByText("Data de Nascimento")).toBeInTheDocument();
       const nonExistant = screen.queryByText("Marcos Castro");
       expect(nonExistant).toBeNull();
