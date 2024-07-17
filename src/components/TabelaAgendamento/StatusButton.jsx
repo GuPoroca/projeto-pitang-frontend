@@ -8,7 +8,7 @@ import "primereact/resources/themes/bootstrap4-light-blue/theme.css";
 import axios from "axios";
 
 const StatusButton = ({ agendamento, onStatusChange }) => {
-  const backend_URL = import.meta.env.VITE_BACKEND_URL;
+  const backend_URL = "http://localhost:3000";
   const [localAgendamento, setLocalAgendamento] = useState(agendamento);
 
   const handleStatusChange = async (newStatus) => {

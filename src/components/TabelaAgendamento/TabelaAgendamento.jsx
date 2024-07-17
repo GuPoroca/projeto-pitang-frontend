@@ -25,6 +25,7 @@ const TabelaAgendamento = ({ agendamentos, numEachPage = 7 }) => {
   };
 
   useEffect(() => {
+    if(agendamentos) return;// se agendamentos for vazio retorna
     const initializeStatus = (agendamento) => {
       if (
         agendamento.statusAgendamento === "cancelado" ||

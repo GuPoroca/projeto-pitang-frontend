@@ -16,7 +16,7 @@ import { useToastContext } from "../../context/ToastContext";
 
 
 const CadastroForm = () => {
-  const backend_URL = import.meta.env.VITE_BACKEND_URL;
+  const backend_URL = "http://localhost:3000";
   const { showToast } = useToastContext();
 
   const {

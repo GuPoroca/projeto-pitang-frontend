@@ -1,29 +1,35 @@
 {
-    "$schema": "https://swc.rs/schema.json",
-    "jsc": {
-      "parser": {
-        "syntax": "ecmascript",
-        "jsx": true,
-        "dynamicImport": false,
-        "privateMethod": false,
-        "functionBind": false,
-        "exportDefaultFrom": false,
-        "exportNamespaceFrom": false,
-        "decorators": false,
-        "decoratorsBeforeExport": false,
-        "topLevelAwait": false,
-        "importMeta": false
-      },
-      "transform": {
-            "react": {
-                "runtime": "automatic"
-            }
-        },
-      "target": "es5",
-      "loose": false,
-      "externalHelpers": false,
-      // Requires v1.2.50 or upper and requires target to be es2016 or upper.
-      "keepClassNames": false
+  "$schema": "https://swc.rs/schema.json",
+  "jsc": {
+    "parser": {
+      "syntax": "ecmascript",
+      "jsx": true,
+      "dynamicImport": false,
+      "privateMethod": false,
+      "functionBind": false,
+      "exportDefaultFrom": false,
+      "exportNamespaceFrom": false,
+      "decorators": false,
+      "decoratorsBeforeExport": false,
+      "topLevelAwait": false,
+      "importMeta": false
     },
-    "minify": false
-  }
+    "transform": {
+      "react": {
+        "runtime": "automatic"
+      }
+    },
+    "target": "es5",
+    "loose": false,
+    "externalHelpers": false,
+    // Requires v1.2.50 or upper and requires target to be es2016 or upper.
+    "keepClassNames": false
+  },
+  "sourceMaps": true,
+  "module": {
+    "type": "commonjs"
+  },
+  // This line is important
+  "isModule": true,
+  "minify": false
+}

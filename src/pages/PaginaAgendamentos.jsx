@@ -13,7 +13,7 @@ import "../components/style.css";
 import TabelaAgendamento from "../components/TabelaAgendamento/TabelaAgendamento";
 
 const Agendamentos = () => {
-  const backend_URL = import.meta.env.VITE_BACKEND_URL;
+  const backend_URL = "http://localhost:3000";
   const [agendamentos, setAgendamentos] = useState([]);
 
   useEffect(() => {
