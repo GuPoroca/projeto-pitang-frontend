@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Button } from "primereact/button";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Input } from "@chakra-ui/react";
@@ -8,8 +7,6 @@ import StatusButton from "./StatusButton";
 import { parse } from "date-fns";
 
 const TabelaAgendamento = ({ agendamentos, numEachPage = 7 }) => {
-  const paginatorLeft = <Button type="button" icon="pi pi-refresh" text />;
-  const paginatorRight = <Button type="button" icon="pi pi-download" text />;
   const [nameFilter, setNameFilter] = useState("");
   const [filteredAgendamentos, setFilteredAgendamentos] = useState([]);
 
@@ -63,8 +60,6 @@ const TabelaAgendamento = ({ agendamentos, numEachPage = 7 }) => {
       rows={numEachPage}
       paginatorTemplate="RowsPerPageDropdown FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink"
       currentPageReportTemplate="{first} até {last} de {totalRecords}"
-      paginatorLeft={paginatorLeft}
-      paginatorRight={paginatorRight}
       tableStyle={{ minWidth: "50rem" }}
       className="custom-datatable"
     >
