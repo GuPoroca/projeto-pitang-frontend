@@ -17,12 +17,11 @@ const TabelaAgendamento = ({ agendamentos, numEachPage = 7 }) => {
     const filteredData = agendamentos.filter((agendamento) => {
       return agendamento.name.toLowerCase().includes(value.toLowerCase());
     });
-
     setFilteredAgendamentos(filteredData);
   };
 
   useEffect(() => {
-    if(!agendamentos) return ;// Retorna imediatamente se agendamentos for undefined
+    if (!agendamentos) return; // Retorna imediatamente se agendamentos for undefined
     const initializeStatus = (agendamento) => {
       if (
         agendamento.statusAgendamento === "cancelado" ||
@@ -48,8 +47,10 @@ const TabelaAgendamento = ({ agendamentos, numEachPage = 7 }) => {
   }, [agendamentos]);
 
   const handleStatusChange = (agendamento, newStatus) => {
-    agendamento.statusAgendamento = newStatus;
-    setFilteredAgendamentos([...filteredAgendamentos]);
+    const updatedAgendamentos = filteredAgendamentos.map((item) =>
+      item.id === agendamento.id ? { ...item, statusAgendamento: newStatus } : item
+    );
+    setFilteredAgendamentos(updatedAgendamentos);
   };
 
   return (
@@ -97,6 +98,7 @@ const TabelaAgendamento = ({ agendamentos, numEachPage = 7 }) => {
         header="Status"
         body={(rowData) => (
           <StatusButton
+            key={rowData.id}
             agendamento={rowData}
             onStatusChange={handleStatusChange}
           />
