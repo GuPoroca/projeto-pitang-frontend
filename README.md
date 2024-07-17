@@ -11,9 +11,7 @@
 
 ## Get Started
 
-Para rodar, primeiro, crie um .env com as variáveis que preferir,
-no .env.example tem as variáveis necessárias e quais eu usei para rodar o projeto.
-abra o terminal na pasta do projeto e,
+Para rodar, primeiro, abra o terminal na pasta do projeto e,
 Instale as dependências:
 
 ```shell
@@ -48,7 +46,10 @@ além disso, utilizei os
 - happy-dom
 - identity-obj-proxy
 
-para dar parse nos componentes estilizados das bibliotecas ao mockar os testes.
+Para dar parse nos componentes estilizados das bibliotecas ao mockar os testes.
+
+Eu não utilizei um .env para o frontend por problemas com o jest, tentei fazer funcionar bastante mas ele reclamava do import do env, e
+não consegui mockar, creio que em um projeto real teria que resolver esse problema para não expor a url ou senha do backend.
 
 ## Considerações
 
