@@ -19,9 +19,7 @@ const Agendamentos = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `${backend_URL}/api/agendamentos`
-        );
+        const response = await axios.get(`${backend_URL}/api/agendamentos`);
         const formattedData = response.data.items.map((item) => ({
           ...item,
           dataNascimento: format(new Date(item.dataNascimento), "dd/MM/yyyy", {

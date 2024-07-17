@@ -8,5 +8,10 @@ export default {
         '^.+\\.(t|j)sx?$': '@swc/jest',
       },
     setupFilesAfterEnv: ['<rootDir>/src/setupTests.js'],
-    moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx']
+    moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],
+    globals: {
+      'process.env': {
+        VITE_BACKEND_URL: 'http://localhost:3000',
+      },
+    },
   };
