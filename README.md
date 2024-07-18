@@ -12,6 +12,7 @@
 ## Get Started
 
 Para rodar, primeiro, abra o terminal na pasta do projeto e,
+
 Instale as dependências:
 
 ```shell
@@ -29,7 +30,7 @@ npm run dev
 ## Decisões
 
 Nesse projeto me utilizei de algumas bibliotecas para facilitar o desenvolvimento de UI's, para entregar
-um projeto mais organizado e limpo. Essas foram
+um projeto mais organizado e limpo. Essas foram:
 - Chakra-UI para fazer o form. (recomendação de Keven)
 - PrimeReact para fazer a tabela de agendamento.
 
@@ -55,3 +56,18 @@ não consegui mockar, creio que em um projeto real teria que resolver esse probl
 
 Gostaria de primeiramente agradecer a oportunidade de aprender e me desenvolver com vocês, e torço para que
 essa experiência seja apenas o começo de uma grande jornada pela frente.
+
+Dificuldades:
+
+O projeto do frontend foi bem mais complicado do que o back, as telas e como componentizar para ficar bom foi uma
+tarefa dificil. Uma dificuldade ainda maior foram os testes já que a configuração do jest com o .env do vite, ou
+com o SWC me deu muita dor de cabeça, porém acredito que consegui fazer um bom trabalho com a experiência que tinha.
+decidir no design mais simples foi fácil, e os requisitos foram bem diretos quanto ao projeto, a maior parte do front
+foi construir os blocos e montar as páginas.
+
+- GitFlow: 
+
+Tomei a liberdade nesse projeto já que era individual e não estava em produção para usar a branch master como
+se fosse a develop. Acredito que as boas práticas do gitflow tenham sido um ponto fraco do meu projeto, já que
+estava um pouco desacostumado, dando nomes bem ruins a branches e a commits. No mais aprendi muito sobre e vou
+continuar estudando e aprimorando esse ponto fraco que encontrei em mim.
